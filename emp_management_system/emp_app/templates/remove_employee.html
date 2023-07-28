@@ -1,0 +1,52 @@
+{% extends 'master.html' %}
+{% load humanize %}
+{% block title %}Edit/Remove Employee{% endblock %}
+{% block css %}
+a:i{
+    color:red;
+}
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h1 style="color:violet">Edit/Remove Employee!</h1>
+    {% if msg_success %}
+        <h5 class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ msg_success }}
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </h5>
+    {% endif %}
+<table>
+    <tr>
+        <th>Employee ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Dept</th>
+        <th>Salary</th>
+        <th>Bonus</th>
+        <th>Designation</th>
+        <th>Phone</th>
+        <th>DOJ</th>
+        <th>Action</th>
+    </tr>
+    {% for x in data %}
+        <tr>
+            <td>{{x.Eid}}</td>
+            <td>{{x.First_name}}</td>
+            <td>{{x.Last_name}}</td>
+            <td>{{x.Dept}}</td>
+            <td>{{x.Salary}}</td>
+            <td>{{x.Bonus}}</td>
+            <td>{{x.Desg}}</td>
+            <td>{{x.Phone}}</td>
+            <td>{{x.DOJ|date:"d-M-Y"}}</td>
+            <td>
+                <a href="{% url 'edit_employee' %}?eid={{x.Eid}}&f_nm={{x.First_name}}&l_nm={{x.Last_name}}&dept={{x.Dept}}&sal={{x.Salary}}&bonus={{x.Bonus}}&desg={{x.Desg}}&phone={{x.Phone}}&date_join={{x.DOJ|date:'Y-m-d'}}" class="btn"><i class="fa-regular fa-pen-to-square" style="color:rgb(0, 123, 255)"></i></a>
+                <a href="{% url 'remove_emp' %}?eid={{x.Eid}}&f_nm={{x.First_name}}&l_nm={{x.Last_name}}&dept={{x.Dept}}&sal={{x.Salary}}&bonus={{x.Bonus}}&desg={{x.Desg}}&phone={{x.Phone}}&doj={{x.DOJ}}" class="btn" onclick="return confirm('All details for this employee will be deleted! \npress OK to confirm')"><i class="fa-solid fa-trash" style="color:rgb(220, 20, 60)"></i></a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

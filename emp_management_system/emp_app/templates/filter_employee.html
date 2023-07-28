@@ -1,0 +1,32 @@
+{% extends 'master.html' %}
+{% block title %}Filter Employee{% endblock %}
+
+{% block css %}
+label{
+    color:white;
+}
+
+input{
+    background-color:#E8F0FE;
+    border:1px solid black;
+}
+{% endblock %}
+
+{% block body %}
+<div class="container" style="padding-left:200px">
+    <h1 style="color:violet">Filter Employee!</h1>
+    <hr>
+<form method="POST" action="filter_emp">
+    {% csrf_token %}
+    <label for="eid" class="form-label fw-bold">Employee ID</label><br>
+    <input type="number" class="form-group" id="eid" name="eid" placeholder="  Enter id..."><br>
+    <label for="name" class="form-label fw-bold">Employee Name</label><br>
+    <input type="text" class="form-group" id="name" name="name" placeholder="  Enter name..."><br>
+    <label for="dept" class="form-label fw-bold">Department</label><br>
+    <input type="text" class="form-group" id="dept" name="dept" placeholder="  Enter Department..."><br>
+    <label for="designation" class="form-label fw-bold">Designation</label><br>
+    <input type="text" class="form-group" id="Designation" name="desg" placeholder="  Enter Designation..."><br><br>
+    <input type="submit" name="sub" class="btn btn-primary">
+</form>
+</div>
+{% endblock %}
