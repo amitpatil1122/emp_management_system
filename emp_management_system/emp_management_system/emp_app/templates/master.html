@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+#menu{
+width:20%;
+height:auto;
+background-color: RGB(12, 66, 62);
+}
+
+#menu a{
+color:lime;
+line-height:30px;
+display:inline-block;
+padding:20px 10px 20px 10px;
+text-decoration:none;
+border-bottom:1px solid;
+line-height:15px;
+width:100%;
+}
+
+#menu a:hover{
+    background-color:rgb(2, 34, 32);
+}
+
+#p_nm{
+    color:#eed202;
+    font-style:italic;
+}
+.d-flex{
+    background-image:url("{% static 'images/bg-2.jpg' %}");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+table{
+    background-color:rgba(0,0,0,0.8);
+    color:white;
+    border: 1px solid black;
+    margin:auto;
+    margin-top:30px;
+}
+
+table tr{
+    height:50px;
+}
+
+table tr th,td{
+    width:100px;
+    border:1px solid black;
+    text-align: center;
+}
+
+{% block css %}
+{% endblock %}
+</style>
+<body>
+<div class="d-flex">
+        <div class="p2" id="menu">
+            <div class="container p2" id="p_nm">
+                <img class="img-fluid mx-auto" style="margin-top: -20px;width:100%; padding-left:20px" src="{% static 'images/logo-4.jpg' %}"/>
+                <h6 style="margin-top:-40px;text-align: center;">Employee Management System</h6>
+            </div>
+                <a href="view_employee" style="padding-top:20px">-- View All Employee --</a><br>
+                <a href="add_employee">-- Add Employee --</a><br>
+                <a href="remove_employee">-- Edit/Remove Employee --</a><br>
+                <a href="filter_employee">-- Filter Employee Details --</a><br>
+<!--                <a href="index">&#45;&#45; index &#45;&#45;</a><br>-->
+                <a href="logout_user" style="color:red;text-decoration:none; font-size:17px"><strong>Logout</strong></a>
+                <br><br><br><br><br><br><br><br>
+
+        </div>
+
+
+    {% block body %}
+    {% endblock %}
+</div>
+<script>{% block script %}{% endblock %}</script>
+</body>
+<footer>
+{% block footer %}
+{% endblock %}
+</footer>
+</html>
